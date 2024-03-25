@@ -1,4 +1,6 @@
-const Turnos = ({ turno }) => {
+import PropTypes from "prop-types";
+
+const Turnos = ({ turno, eliminarTurno }) => {
   return (
     <div className="cita">
       <p>
@@ -16,9 +18,18 @@ const Turnos = ({ turno }) => {
       <p>
         Sintomas: <span>{turno.sintomas}</span>
       </p>
-      <button className="button eliminar u-full-width">Eliminar &times;</button>
+      <button
+        className="button eliminar u-full-width"
+        onClick={() => eliminarTurno(turno.id)}
+      >
+        Eliminar &times;
+      </button>
     </div>
   );
 };
 
+Turnos.propTypes = {
+  turno: PropTypes.object.isRequired,
+  eliminarTurno: PropTypes.func.isRequired,
+};
 export default Turnos;

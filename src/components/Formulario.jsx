@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { v4 as uuid } from "uuid";
+import PropTypes from "prop-types";
 
 const Formulario = ({ crearTurno }) => {
   const [turno, setTurno] = useState({
@@ -62,9 +63,10 @@ const Formulario = ({ crearTurno }) => {
         <p className="alerta-error">Todos los campos son obligatorios</p>
       ) : null}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="">Nombre Mascota</label>
+        <label htmlFor="mascota">Nombre Mascota</label>
         <input
           type="text"
+          id="mascota"
           name="mascota"
           className="u-full-width"
           placeholder="Nombre Mascota"
@@ -72,9 +74,10 @@ const Formulario = ({ crearTurno }) => {
           value={mascota}
         />
 
-        <label htmlFor="">Nombre Dueño</label>
+        <label htmlFor="propietario">Nombre Dueño</label>
         <input
           type="text"
+          id="propietario"
           name="propietario"
           className="u-full-width"
           placeholder="Nombre del Dueño"
@@ -82,26 +85,29 @@ const Formulario = ({ crearTurno }) => {
           value={propietario}
         />
 
-        <label htmlFor="">Fecha</label>
+        <label htmlFor="fecha">Fecha</label>
         <input
           type="date"
+          id="fecha"
           name="fecha"
           className="u-full-width"
           onChange={handleChange}
           value={fecha}
         />
 
-        <label htmlFor="">Hora</label>
+        <label htmlFor="hora">Hora</label>
         <input
           type="time"
+          id="hora"
           name="hora"
           className="u-full-width"
           onChange={handleChange}
           value={hora}
         />
 
-        <label htmlFor="">Sintomas</label>
+        <label htmlFor="sintomas">Sintomas</label>
         <textarea
+          id="sintomas"
           name="sintomas"
           className="u-full-width"
           onChange={handleChange}
@@ -118,4 +124,7 @@ const Formulario = ({ crearTurno }) => {
   );
 };
 
+Formulario.propTypes = {
+  crearTurno: PropTypes.func.isRequired,
+};
 export default Formulario;
